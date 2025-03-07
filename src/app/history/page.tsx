@@ -1,13 +1,13 @@
 "use client";
 
 // import Image from "next/image";
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, /*DialogDescription*/ } from "@/components/ui/dialog";
 import { useGetApi } from "../services/api";
 
 
@@ -17,9 +17,13 @@ export default function HistoryPage() {
     const [searchEmail, setSearchEmail] = useState<string>(""); // Déclencheur API
     const [emailError, setEmailError] = useState<string>("");
 
-    const { data: orders, loading, error } = useGetApi(
+    const { data: orders } = useGetApi(
         searchEmail ? `orders/by-email?email=${searchEmail}` : null
     );
+
+    console.log(orders);
+
+    console.log(searchEmail);
 
     // Validation de l'email
     const validateEmail = (email: string) => {
