@@ -1,23 +1,25 @@
 "use client";
 
 // import Image from "next/image";
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useGetApi } from "../services/api";
+import {Order} from "@/entities/Order";
+import {FormatDate} from "@/usefuls/FormatDate";
 
 
 export default function HistoryPage() {
-    const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
+    const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
     const [email, setEmail] = useState<string>("");
     const [searchEmail, setSearchEmail] = useState<string>(""); // Déclencheur API
     const [emailError, setEmailError] = useState<string>("");
 
-    const { data: orders, loading, error } = useGetApi(
+    const { data: orders } = useGetApi<Order>(
         searchEmail ? `orders/by-email?email=${searchEmail}` : null
     );
 
@@ -88,7 +90,7 @@ export default function HistoryPage() {
                                             >
                                                 <div className="space-y-2">
                                                     <p className="font-medium text-orange-500">
-                                                        Commande de {order.datetime_order}
+                                                        Commande de {FormatDate(order.datetime_order)}
                                                     </p>
                                                     <p className="text-sm">Ref: {order.reference}</p>
                                                     <p className="text-sm">{order.paid ? 'Oui' : 'Non'}</p>
@@ -99,7 +101,7 @@ export default function HistoryPage() {
                                 </ScrollArea>
                             ) : (
                                 <p className="text-center text-gray-500">
-                                    Vous n'avez pas encore passé de commande avec cet email.
+                                    Vous nave pas encore passé de commande avec cet email.
                                 </p>
                             )}
                         </div>
@@ -114,7 +116,7 @@ export default function HistoryPage() {
                                 <div className="space-y-4">
                                     <div>
                                         <h3 className="font-medium text-gray-500">Date et heure:</h3>
-                                        <p>{selectedOrder?.datetime_order}</p>
+                                        <p>{FormatDate(selectedOrder?.datetime_order)}</p>
                                     </div>
                                     <div>
                                         <h3 className="font-medium text-gray-500">Email:</h3>

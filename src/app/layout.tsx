@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import {Utensils} from "lucide-react";
 import React from "react";
+import Layout from "@/components/layout/Layout";
+import {AuthProvider} from "@/contexts/AuthContext";
+import {OrderProvider} from "@/contexts/OrderContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,25 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 
-          {/* Header */}
-          <header className="bg-orange-500 p-6 text-white text-center">
-              <h1 className="text-3xl font-bold flex items-center justify-center gap-2">
-                  <Utensils className="h-8 w-8" />
-                  Borne de Commande
-              </h1>
-          </header>
-
-          {children}
-
-          {/* Footer */}
-          <footer className="bg-white border border-gray-200 p-6 text-center fixed bottom-0 w-full">
-              <span className="text-sm font-bold flex items-center justify-center gap-2">
-                  © Copyright 2025 by <h3 className="text-orange-500">Notre Dame du Roc</h3>
-              </span>
-          </footer>
+        <AuthProvider>
+            <OrderProvider>
+                <Layout>
+                    {children}
+                </Layout>
+            </OrderProvider>
+        </AuthProvider>
 
       </body>
     </html>

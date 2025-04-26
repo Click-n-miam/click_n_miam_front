@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 const API_URL = "http://localhost:8080/api/"; // URL de l'API Spring Boot
 
-export function useGetApi(route: string | null) {
-    const [data, setData] = useState<[]>([]);
+export function useGetApi<T>(route: string | null) {
+    const [data, setData] = useState<T[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
