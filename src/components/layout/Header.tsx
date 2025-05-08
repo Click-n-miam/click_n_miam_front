@@ -4,6 +4,7 @@ import React from 'react';
 import { UtensilsCrossed } from 'lucide-react';
 
 import { useAuth } from "@/contexts/AuthContext";
+import {usePathname} from "next/navigation";
 
 
 export default function Header() {
@@ -19,6 +20,8 @@ export default function Header() {
     // @ts-expect-error
     const { user, handleLogout } = useAuth();
 
+    const pathname = usePathname();
+
     return (
         <header className="bg-white shadow-md">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -26,6 +29,9 @@ export default function Header() {
                     <UtensilsCrossed size={28} className="text-orange-500" />
                     <h1 className="text-xl font-bold text-orange-500">Campus Meals</h1>
                 </div>
+
+
+                {pathname}
 
                 {user && (
                     <div className="flex items-center">

@@ -1,5 +1,7 @@
+import {Menu} from "@/entities/Menu";
+
 export type Order = {
-    id: number,
+    id: number | null,
     paid: boolean,
     price: number,
 
@@ -8,4 +10,7 @@ export type Order = {
     email: string,
 
     datetime_order: Date,
+
+    //
+    menus: Array<Menu>,
 }

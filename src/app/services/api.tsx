@@ -28,8 +28,7 @@ export function useGetApi<T>(route: string | null) {
 export async function postApi(route: string, data: any)  {
 
     try {
-        const response = await axios.post(API_URL + route, data);
-        return response.data;
+        return await axios.post(API_URL + route, data);
     } catch (error) {
         console.error("Erreur lors de l'ajout.", error);
         throw error;

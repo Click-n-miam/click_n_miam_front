@@ -36,7 +36,7 @@ export default function DayCard({
                     ? 'bg-orange-50 ring-2 ring-orange-500 cursor-pointer'
                     : 'bg-white hover:bg-orange-50 cursor-pointer'
             }
-            transform hover:scale-[1.02] group
+            transform hover:scale-[1.02] group 
           `}
             onClick={() => handleMenuCreation(day)}
         >
@@ -57,11 +57,6 @@ export default function DayCard({
                         <div className="flex items-center text-green-600">
                             <Check size={16} className="mr-2" />
                             <span className="font-medium">Order Confirmed</span>
-                        </div>
-                        <div className="text-sm text-gray-600">
-                            <p>Main: {confirmedOrder.items.mainDish.name}</p>
-                            <p>Side: {confirmedOrder.items.sideDish.name}</p>
-                            <p>Dessert: {confirmedOrder.items.dessert.name}</p>
                         </div>
                     </div>
                 ) : (
