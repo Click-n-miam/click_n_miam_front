@@ -1,7 +1,6 @@
 "use client";
 
 import React, {useEffect, useState} from 'react';
-import { useRouter } from 'next/navigation';
 
 import { useOrder } from '@/contexts/OrderContext';
 import {Sun, Moon} from 'lucide-react';
@@ -28,14 +27,6 @@ export default function DaySelectionPage() {
 
     const [orderSetTuesday, setOrderSetTuesday] = useState(false);
     const [orderSetThursday, setOrderSetThursday] = useState(false);
-
-    // const handleDaySelect = (selectedDay: 'tuesday' | 'thursday') => {
-    //     if (!canOrderForDay(selectedDay)) {
-    //         return;
-    //     }
-    //     setDay(selectedDay);
-    //     navigate('/menu-builder/main');
-    // };
 
     useEffect(() => {
 
@@ -75,16 +66,11 @@ export default function DaySelectionPage() {
 
     }, [order?.menus])
 
-    const handleShowOrder = () => {
-        alert(JSON.stringify(order));
-    }
-
     return (
         <div className="max-w-3xl mx-auto">
             <div className="mb-8 text-center">
                 <h2 className="text-2xl font-bold text-gray-800">Sélectionner le jour de votre menu</h2>
                 <p className="text-gray-600 mt-2">sous titre</p>
-                <button onClick={handleShowOrder}> test order</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

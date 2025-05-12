@@ -7,7 +7,6 @@ import {useEffect} from "react";
 
 export default function SessionOrdersPanel()
 {
-
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const { order, handleRemoveMenu, handleSendOrder } = useOrder();
@@ -15,7 +14,6 @@ export default function SessionOrdersPanel()
     useEffect(() => {
 
     }, [order]);
-
 
     return (
         <div className="h-full flex flex-col">
@@ -80,10 +78,10 @@ export default function SessionOrdersPanel()
 
                 { order?.menus?.length > 0 ? (
                     <div>
-                        <p className="text-sm text-gray-600 mb-3 text-center">Choisir la méthode de paiement</p>
+                        <p className="text-sm text-gray-600 mb-3 text-center">Confirmer la commande ?</p>
                         <button onClick={handleSendOrder} className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors flex items-center justify-center w-full">
                             <Wallet size={16} className="mr-2" />
-                            Monnaie
+                            Confirmer & commander
                         </button>
                     </div>
                 ) : null}

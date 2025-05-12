@@ -1,6 +1,5 @@
 "use client";
 
-// import Image from "next/image";
 import React, {useState} from 'react';
 
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -23,7 +22,6 @@ export default function HistoryPage() {
         searchEmail ? `orders/by-email?email=${searchEmail}` : null
     );
 
-    // Validation de l'email
     const validateEmail = (email: string) => {
         if (!email.endsWith("@lycee-ndduroc.com")) {
             setEmailError("L'email doit se terminer par @lycee-ndduroc.com");
@@ -33,7 +31,6 @@ export default function HistoryPage() {
         return true;
     };
 
-    // Déclencher la recherche après le clic sur le bouton
     const handleEmailSubmit = () => {
         if (validateEmail(email)) {
             setSearchEmail(email);

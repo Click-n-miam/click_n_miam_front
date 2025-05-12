@@ -1,11 +1,9 @@
 "use client";
 
-import React, { ReactNode } from 'react';
+import React, {ReactNode, useEffect} from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
-// import SessionOrdersPanel from '../Orders/SessionOrdersPanel';
-// import { useLocation } from 'react-router-dom';
 
 import { useAuth } from "@/contexts/AuthContext";
 import {usePathname, useRouter} from "next/navigation";
@@ -27,9 +25,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     const pathname = usePathname();
 
-    // if (!user && pathname !== '/') {
-    //     router.push('/');
-    // }
+    useEffect(() => {
+        if (!user && pathname !== '/') {
+            router.push('/');
+        }
+    }, [user]);
 
     return (
         <div className="flex flex-col min-h-screen bg-orange-50">

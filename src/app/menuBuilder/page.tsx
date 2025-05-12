@@ -125,7 +125,10 @@ export default function MenuBuilderPage() {
                     <div className="w-20"></div>
                 </div>
 
-                <StepIndicator currentStep={currentStep} />
+                { currentStep !== 'recap' ? (
+                    <StepIndicator currentStep={currentStep} />
+                ) : null }
+
             </div>
 
 
@@ -139,6 +142,7 @@ export default function MenuBuilderPage() {
                     </div>
 
                     <div className="p-6">
+                        <h3 className="font-semibold mb-4">Composition du menu</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <OrderItem
                                 label="Plat"
@@ -152,9 +156,18 @@ export default function MenuBuilderPage() {
                             />
                         </div>
 
+
+                        <h3 className="font-semibold mt-8 mb-4">Options choisies</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                           Aucun pour le moment...
+                        </div>
+
+
                         <div className="mt-8 border-t pt-6">
-                            <div className="flex justify-between text-lg font-medium text-gray-800">
-                                <span>Total</span>
+
+                            <div className="text-lg font-medium text-gray-800">
+                                <span>Total :</span>
+                                <br/>
                                 <span>4.50 €</span>
                             </div>
 
@@ -166,6 +179,8 @@ export default function MenuBuilderPage() {
                                     <CalendarDays size={18} className="mr-2" />
                                     Confirmer le menu
                                 </button>
+
+
                             </div>
                         </div>
                     </div>

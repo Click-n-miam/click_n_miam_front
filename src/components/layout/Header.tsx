@@ -26,8 +26,8 @@ export default function Header() {
         <header className="bg-white shadow-md">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <div className="flex items-center space-x-2">
-                    <UtensilsCrossed size={28} className="text-orange-500" />
-                    <h1 className="text-xl font-bold text-orange-500">Campus Meals</h1>
+                    <UtensilsCrossed size={28} className="text-orange-700" />
+                    <h1 className="text-xl font-bold text-orange-700">Click`n`Miam</h1>
                 </div>
 
 

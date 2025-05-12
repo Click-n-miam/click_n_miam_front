@@ -22,7 +22,7 @@ export const OrderProvider= ({children}: {children: ReactNode}) => {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    const { user } = useAuth();
+    const { user, handleLogout } = useAuth();
 
     const [order, setOrder] = useState<Order | null>(null);
     const [buildMenu, setBuildMenu] = useState<Menu | null>(null);
@@ -91,6 +91,11 @@ export const OrderProvider= ({children}: {children: ReactNode}) => {
                 const status = response.status === 201 ? 'Commande passée !' : 'Une erreur est survenue...';
 
                 alert(`${status} \r Référence de votre commande : ${response.data.reference}`);
+
+                if(response.status === 201) {
+                    handleRemoveOrder()
+                    handleLogout()
+                }
             })
     }
 
